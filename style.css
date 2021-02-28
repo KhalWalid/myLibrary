@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+
+body {
+    height: 100%;
+    margin: 0;
+    text-align: center;
+    font-family: Rubik;
+    background-color: #F8F9FB;
+    color: rgb(76, 86, 106);
+}
+
+header {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 50px;
+}
+
+#newBook {
+    border: 0.0625em solid rgb(76, 86, 106);
+    padding: 0.375em 0.75em;
+    background: transparent;
+    transition: background-color 200ms ease-in 0s, border-color 200ms ease-in 0s, box-shadow 200ms ease-in 0s, color 200ms ease-in 0s;
+    border-radius: 0.25em;
+}
+
+#newBook:hover, #newBook:active {
+    border-color: rgb(121, 184, 202);
+    color: rgb(121, 184, 202);
+    cursor: pointer;
+}
+
+#newBook:focus {
+    outline: currentcolor none medium;
+}
+
+#cardsContainer {
+    margin: 0px 50px;
+    display: flex;
+}
+
+#cardsContainer div {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    min-width: 230px;
+    min-height: 230px;
+    margin: 15px;
+    border-radius: 0.5em;
+    background-color: white;
+    transition: box-shadow 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s;
+    border: 0.0625em solid #eceff4;
+}
+
+#cardsContainer div:hover {
+    box-shadow: rgba(184, 194, 215, 0.35) 0px 10px 20px 2px;
+}
