@@ -1,7 +1,33 @@
-const cardsContainer = document.querySelector('#cardsContainer')
+const cardsContainer = document.querySelector('#cardsContainer');
+const form = document.querySelector('form')
+const newBookButton = document.querySelector('#newBook')
+const cancelButton = document.querySelector('#cancel')
+const submitButton = document.querySelector('#submit')
+
+newBookButton.addEventListener('click', () => {
+    form.classList.remove('displayForm');
+});
+
+cancelButton.addEventListener('click', () => {
+    form.classList.add('displayForm');
+});
+
+submitButton.addEventListener('click', () => {
+    title = document.getElementById('title').value;
+    author = document.getElementById('author').value;
+    pages = document.getElementById('pages').value;
+    isRead = document.getElementById('isRead').checked;
+    if (this.title != '' && this.author != '' && this.pages != '') {
+        formNewBook();
+    }
+    else return
+    form.classList.add('displayForm')
+});
+
 
 let myLibrary = [];
 
+// Book constructor
 function Book(title, author, pages, isRead) {
     this.title = title;
     this.author = author;
@@ -14,21 +40,28 @@ function Book(title, author, pages, isRead) {
 
 function addBookToLibrary(book) {
     myLibrary.push(book)
-}
+};
 
+// Display each book on the page
 function display() {
     myLibrary.forEach(book => {
         const bookCard = document.createElement('div');
         bookCard.innerHTML = `<p style='font-size:20px'><b>${book.title}</b></p><p>Written by ${book.author}</p><p>${book.pages} pages</p>${(book.isRead) ? `<p style='color:#a3be8c'>You read this book</p>` : `<p style='color:#bf616a'>You didn't read this book</p>`}`;
         cardsContainer.appendChild(bookCard)
-    })
-}
+    });
+};
+
+function formNewBook() {
+    addBookToLibrary(new Book(title, author, pages, isRead))
+    cardsContainer.innerHTML = ''
+    display()
+};
 
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, true);
-const NineteenEightyFour = new Book('1984', 'George Orwell', 265, false);
+const NineteenEightyFour = new Book('1984', 'George Orwell', 376, false);
 
 
-addBookToLibrary(theHobbit)
-addBookToLibrary(NineteenEightyFour)
+addBookToLibrary(theHobbit);
+addBookToLibrary(NineteenEightyFour);
 
-display()
+display();

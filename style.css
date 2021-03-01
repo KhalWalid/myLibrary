@@ -15,6 +15,7 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 0px 50px;
+    border-bottom: 0.0625em solid #eceff4;
 }
 
 #newBook {
@@ -55,4 +56,72 @@ header {
 
 #cardsContainer div:hover {
     box-shadow: rgba(184, 194, 215, 0.35) 0px 10px 20px 2px;
+}
+
+form {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 0.0625em solid black;
+    font-size: 20px;
+    width: 300px;
+    min-width: 300px;
+    padding: 20px;
+    display: block;
+    color: rgb(216, 222, 233);
+    background-color: rgb(46, 52, 64);
+    box-shadow:0 0 0 9000px rgba(0,0,0,0.75);
+    border-radius: 0.5em;
+    transition: box-shadow 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s;
+}
+
+form input {
+    border-radius: 0.25em;
+    background: transparent;
+    padding: 0.375em 0.75em;
+    color: rgb(236, 239, 244);
+    line-height: 1.15;
+    border: 0.0625em solid rgb(76, 86, 106);
+}
+
+#text-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#text-input label {
+    padding: 8px;
+}
+
+#isRead input {
+    background-color: green;
+}
+
+#buttons {
+    padding: 15px 0px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#buttons button {
+    border: 0.0625em solid rgb(76, 86, 106);
+    color: rgb(236, 239, 244);
+    line-height: 1.15;
+    padding: 0.375em 0.75em;
+    background: transparent;
+    border-radius: 0.25em;
+    transition: background-color 200ms ease-in 0s, border-color 200ms ease-in 0s, box-shadow 200ms ease-in 0s, color 200ms ease-in 0s;
+    width: 100px;
+}
+
+.displayForm {
+    display: none !important;
+}
+
+#buttons button:hover {
+    border-color: rgb(121, 184, 202);
+    color: rgb(121, 184, 202);
+    cursor: pointer;
 }
