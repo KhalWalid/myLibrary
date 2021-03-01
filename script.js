@@ -43,12 +43,12 @@ function addBookToLibrary(book) {
     myLibrary.push(book)
 };
 
-// Display each book on the page and configure the delete buttons at the same time
+// Display each book on the page and configure the delete buttons and read buttons at the same time
 function display() {
     cardsContainer.innerHTML = ''
     myLibrary.forEach((book,index) => {
         const bookCard = document.createElement('div');
-        bookCard.innerHTML = `<p style='font-size:20px'><b>${book.title}</b></p><p>Written by ${book.author}</p><p>${book.pages} pages</p>${(book.isRead) ? `<p style='color:#a3be8c'>You read this book</p>` : `<p style='color:#bf616a'>You didn't read this book</p>`}<button id='deleteButton' data-index='${index}' type='button'>Delete</button>`;
+        bookCard.innerHTML = `<p style='font-size:20px'><b>${book.title}</b></p><p>Written by ${book.author}</p><p>${book.pages} pages</p>${(book.isRead) ? `<button id="readButton" class='isRead' data-index='${index}'>You read this book</button>` : `<button id="readButton" class='notRead' data-index='${index}'>You didn't read this book</button>`}<button id='deleteButton' data-index='${index}' type='button'>Delete</button>`;
         cardsContainer.appendChild(bookCard)
     });
     deleteButtons = document.querySelectorAll('#deleteButton')
@@ -56,6 +56,13 @@ function display() {
         button.addEventListener('click', () => {
             myLibrary.splice(button.dataset.index,1);
             display();
+        });
+    });
+    readButtons = document.querySelectorAll('#readButton')
+    readButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            myLibrary[button.dataset.index]['isRead']=!myLibrary[button.dataset.index]['isRead'];
+            display()
         });
     });
 };

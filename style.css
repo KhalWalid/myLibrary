@@ -144,3 +144,39 @@ form input {
 button:focus {
     outline: currentcolor none medium;
 }
+
+.isRead {
+    border: medium none;
+    border-radius: 0.25em;
+    margin: 8px;
+    width: 150px;
+    align-self: center;
+    background: #a3be8c;
+    padding: 0.375em 0.75em;
+    line-height: 1.15;
+    color: rgb(59, 66, 82);
+    transition: background-color 100ms ease-in 0s, border-color 100ms ease-in 0s, box-shadow 100ms ease-in 0s, color 100ms ease-in 0s;
+}
+
+.isRead:hover {
+    cursor: pointer;
+    background-color: rgb(148, 182, 134);
+}
+
+.notRead {
+    border: medium none;
+    border-radius: 0.25em;
+    margin: 8px;
+    width: 200px;
+    align-self: center;
+    background: #bf616a;
+    padding: 0.375em 0.75em;
+    line-height: 1.15;
+    color: rgb(59, 66, 82);
+    transition: background-color 100ms ease-in 0s, border-color 100ms ease-in 0s, box-shadow 100ms ease-in 0s, color 100ms ease-in 0s;
+}
+
+.notRead:hover {
+    background-color: rgb(176,89,100);
+    cursor: pointer;
+}
