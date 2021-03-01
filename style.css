@@ -146,7 +146,7 @@ button:focus {
 }
 
 .isRead {
-    border: medium none;
+    border: 0.0625em solid rgb(76, 86, 106);
     border-radius: 0.25em;
     margin: 8px;
     width: 150px;
@@ -164,7 +164,7 @@ button:focus {
 }
 
 .notRead {
-    border: medium none;
+    border: 0.0625em solid rgb(76, 86, 106);
     border-radius: 0.25em;
     margin: 8px;
     width: 200px;
@@ -172,7 +172,7 @@ button:focus {
     background: #bf616a;
     padding: 0.375em 0.75em;
     line-height: 1.15;
-    color: rgb(59, 66, 82);
+    color: rgb(236, 239, 244);
     transition: background-color 100ms ease-in 0s, border-color 100ms ease-in 0s, box-shadow 100ms ease-in 0s, color 100ms ease-in 0s;
 }
 

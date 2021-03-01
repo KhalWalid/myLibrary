@@ -3,7 +3,14 @@ const form = document.querySelector('form')
 const newBookButton = document.querySelector('#newBook')
 const cancelButton = document.querySelector('#cancel')
 const submitButton = document.querySelector('#submit')
-let id = 0
+const inputs = document.querySelectorAll('input')
+let myLibrary = []
+
+if(!localStorage.getItem('library')) {
+    saveLibrary();
+} else {
+    loadLibrary();
+}
 
 newBookButton.addEventListener('click', () => {
     form.classList.remove('displayForm');
@@ -18,15 +25,18 @@ submitButton.addEventListener('click', () => {
     author = document.getElementById('author').value;
     pages = document.getElementById('pages').value;
     isRead = document.getElementById('isRead').checked;
-    if (title != '' && author != '' && pages != '') {
+    if (myLibrary.some((book) => book.title === title)) {
+        alert(`Book is already in the library`)
+    }
+    else if (title != '' && author != '' && pages != '') {
         formNewBook();
     }
     else return
     form.classList.add('displayForm')
+    inputs.forEach(input => {
+        input.value = ``
+    })
 });
-
-
-let myLibrary = [];
 
 // Book constructor
 function Book(title, author, pages, isRead) {
@@ -55,6 +65,7 @@ function display() {
     deleteButtons.forEach(button => {
         button.addEventListener('click', () => {
             myLibrary.splice(button.dataset.index,1);
+            saveLibrary()
             display();
         });
     });
@@ -62,6 +73,7 @@ function display() {
     readButtons.forEach(button => {
         button.addEventListener('click', () => {
             myLibrary[button.dataset.index]['isRead']=!myLibrary[button.dataset.index]['isRead'];
+            saveLibrary()
             display()
         });
     });
@@ -69,14 +81,18 @@ function display() {
 
 function formNewBook() {
     addBookToLibrary(new Book(title, author, pages, isRead))
+    saveLibrary()
     display()
 };
 
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, true);
-const NineteenEightyFour = new Book('1984', 'George Orwell', 376, false);
+function saveLibrary() {
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+}
 
+function loadLibrary() {
+    myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+    if (myLibrary === null) myLibrary = [];
+}
 
-addBookToLibrary(theHobbit);
-addBookToLibrary(NineteenEightyFour);
-
+loadLibrary()
 display();
