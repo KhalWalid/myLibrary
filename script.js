@@ -3,6 +3,7 @@ const form = document.querySelector('form')
 const newBookButton = document.querySelector('#newBook')
 const cancelButton = document.querySelector('#cancel')
 const submitButton = document.querySelector('#submit')
+let id = 0
 
 newBookButton.addEventListener('click', () => {
     form.classList.remove('displayForm');
@@ -17,7 +18,7 @@ submitButton.addEventListener('click', () => {
     author = document.getElementById('author').value;
     pages = document.getElementById('pages').value;
     isRead = document.getElementById('isRead').checked;
-    if (this.title != '' && this.author != '' && this.pages != '') {
+    if (title != '' && author != '' && pages != '') {
         formNewBook();
     }
     else return
@@ -42,18 +43,25 @@ function addBookToLibrary(book) {
     myLibrary.push(book)
 };
 
-// Display each book on the page
+// Display each book on the page and configure the delete buttons at the same time
 function display() {
-    myLibrary.forEach(book => {
+    cardsContainer.innerHTML = ''
+    myLibrary.forEach((book,index) => {
         const bookCard = document.createElement('div');
-        bookCard.innerHTML = `<p style='font-size:20px'><b>${book.title}</b></p><p>Written by ${book.author}</p><p>${book.pages} pages</p>${(book.isRead) ? `<p style='color:#a3be8c'>You read this book</p>` : `<p style='color:#bf616a'>You didn't read this book</p>`}`;
+        bookCard.innerHTML = `<p style='font-size:20px'><b>${book.title}</b></p><p>Written by ${book.author}</p><p>${book.pages} pages</p>${(book.isRead) ? `<p style='color:#a3be8c'>You read this book</p>` : `<p style='color:#bf616a'>You didn't read this book</p>`}<button id='deleteButton' data-index='${index}' type='button'>Delete</button>`;
         cardsContainer.appendChild(bookCard)
+    });
+    deleteButtons = document.querySelectorAll('#deleteButton')
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            myLibrary.splice(button.dataset.index,1);
+            display();
+        });
     });
 };
 
 function formNewBook() {
     addBookToLibrary(new Book(title, author, pages, isRead))
-    cardsContainer.innerHTML = ''
     display()
 };
 

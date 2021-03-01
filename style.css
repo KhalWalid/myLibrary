@@ -32,13 +32,10 @@ header {
     cursor: pointer;
 }
 
-#newBook:focus {
-    outline: currentcolor none medium;
-}
-
 #cardsContainer {
     margin: 0px 50px;
     display: flex;
+    flex-wrap: wrap;
 }
 
 #cardsContainer div {
@@ -124,4 +121,26 @@ form input {
     border-color: rgb(121, 184, 202);
     color: rgb(121, 184, 202);
     cursor: pointer;
+}
+
+#deleteButton {
+    width: 80px;
+    margin: 8px;
+    align-self: center;
+    border-radius: 0.25em;
+    background: transparent;
+    padding: 0.375em 0.75em;
+    color: rgb(76, 86, 106);
+    transition: background-color 100ms ease-in 0s, border-color 100ms ease-in 0s, box-shadow 100ms ease-in 0s, color 100ms ease-in 0s;
+    border: 0.0625em solid rgb(76, 86, 106);
+}
+
+#deleteButton:hover {
+    border-color: #bf616a;
+    color: #bf616a;
+    cursor: pointer;
+}
+
+button:focus {
+    outline: currentcolor none medium;
 }
