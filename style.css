@@ -26,7 +26,8 @@ header {
     border-radius: 0.25em;
 }
 
-#newBook:hover, #newBook:active {
+#newBook:hover,
+#newBook:active {
     border-color: rgb(121, 184, 202);
     color: rgb(121, 184, 202);
     cursor: pointer;
@@ -68,7 +69,7 @@ form {
     display: block;
     color: rgb(216, 222, 233);
     background-color: rgb(46, 52, 64);
-    box-shadow:0 0 0 9000px rgba(0,0,0,0.75);
+    box-shadow: 0 0 0 9000px rgba(0, 0, 0, 0.75);
     border-radius: 0.5em;
     transition: box-shadow 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s;
 }
@@ -177,6 +178,6 @@ button:focus {
 }
 
 .notRead:hover {
-    background-color: rgb(176,89,100);
+    background-color: rgb(176, 89, 100);
     cursor: pointer;
 }

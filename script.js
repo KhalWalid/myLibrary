@@ -6,12 +6,6 @@ const submitButton = document.querySelector('#submit')
 const inputs = document.querySelectorAll('input')
 let myLibrary = []
 
-if(!localStorage.getItem('library')) {
-    saveLibrary();
-} else {
-    loadLibrary();
-}
-
 newBookButton.addEventListener('click', () => {
     form.classList.remove('displayForm');
 });
@@ -27,11 +21,9 @@ submitButton.addEventListener('click', () => {
     isRead = document.getElementById('isRead').checked;
     if (myLibrary.some((book) => book.title === title)) {
         alert(`Book is already in the library`)
-    }
-    else if (title != '' && author != '' && pages != '') {
+    } else if (title != '' && author != '' && pages != '') {
         formNewBook();
-    }
-    else return
+    } else return
     form.classList.add('displayForm')
     inputs.forEach(input => {
         input.value = ``
@@ -56,7 +48,7 @@ function addBookToLibrary(book) {
 // Display each book on the page and configure the delete buttons and read buttons at the same time
 function display() {
     cardsContainer.innerHTML = ''
-    myLibrary.forEach((book,index) => {
+    myLibrary.forEach((book, index) => {
         const bookCard = document.createElement('div');
         bookCard.innerHTML = `<p style='font-size:20px'><b>${book.title}</b></p><p>Written by ${book.author}</p><p>${book.pages} pages</p>${(book.isRead) ? `<button id="readButton" class='isRead' data-index='${index}'>You read this book</button>` : `<button id="readButton" class='notRead' data-index='${index}'>You didn't read this book</button>`}<button id='deleteButton' data-index='${index}' type='button'>Delete</button>`;
         cardsContainer.appendChild(bookCard)
@@ -64,7 +56,7 @@ function display() {
     deleteButtons = document.querySelectorAll('#deleteButton')
     deleteButtons.forEach(button => {
         button.addEventListener('click', () => {
-            myLibrary.splice(button.dataset.index,1);
+            myLibrary.splice(button.dataset.index, 1);
             saveLibrary()
             display();
         });
@@ -72,7 +64,7 @@ function display() {
     readButtons = document.querySelectorAll('#readButton')
     readButtons.forEach(button => {
         button.addEventListener('click', () => {
-            myLibrary[button.dataset.index]['isRead']=!myLibrary[button.dataset.index]['isRead'];
+            myLibrary[button.dataset.index]['isRead'] = !myLibrary[button.dataset.index]['isRead'];
             saveLibrary()
             display()
         });
